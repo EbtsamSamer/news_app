@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/home/home_screen.dart';
+import 'package:news_app/screens/home/home_screen.dart';
+
 
 void main(){
   runApp(MyApp());
