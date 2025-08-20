@@ -9,9 +9,9 @@ class NewsRepo {
 
   NewsRepo(this.apiManger);
 
-   Future<SourcesResponse>getSources() async{
+   Future<SourcesResponse>getSources(String catId) async{
     var response= await apiManger.getApi(EndPoints.sources,params:  {"apiKey":
-    Constants.API_KEY,
+    Constants.API_KEY,"category":catId,
     });
     SourcesResponse sourcesResponse=SourcesResponse.fromJson(response.data);
     return sourcesResponse;

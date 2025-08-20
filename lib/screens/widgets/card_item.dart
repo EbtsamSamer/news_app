@@ -23,7 +23,8 @@ class CardItem extends StatelessWidget {
             child: Image.network(
               article?.urlToImage ?? " ",
               fit: BoxFit.cover,
-              width: double.infinity,
+              width:345,
+              height: 220,
             ),
           ),
          Padding(
@@ -40,11 +41,14 @@ class CardItem extends StatelessWidget {
              Row(
                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                children: [
-                 Text(article?.author ?? " ",style: GoogleFonts.poppins(
+                 Text(article?.author?? " ",style: GoogleFonts.poppins(
                    fontSize: 12,
                    fontWeight: FontWeight.w500,
-                   color: Color(0xFFA0A0A0)
-                 ),),
+                   color: Color(0xFFA0A0A0),
+                 ),
+                   maxLines: 1,
+                   overflow:TextOverflow.ellipsis ,
+                 ),
                  Text(article?.publishedAt?.substring(0, 10) ?? " ",style: GoogleFonts.poppins(
                      fontSize: 12,
                      fontWeight: FontWeight.w500,

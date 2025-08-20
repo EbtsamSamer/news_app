@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news_app/models/category_model.dart';
+import 'package:news_app/screens/pages/category_page.dart';
 import 'package:news_app/screens/pages/home_page.dart';
-class HomeScreen extends StatelessWidget {
-  static const String routeName = "HomeScreen";
+import 'package:news_app/screens/widgets/app_drawer.dart';
 
+class HomeScreen extends StatefulWidget {
+  static const String routeName = "HomeScreen";
 
   HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +29,7 @@ class HomeScreen extends StatelessWidget {
         ],
         centerTitle: true,
         title: Text(
-          "Home",
+          categoryModel?.name??"",
           style: GoogleFonts.inter(
             fontWeight: FontWeight.w500,
             fontSize: 20,
@@ -29,8 +37,25 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      drawer: Drawer(),
-      body:HomePage(),
+      drawer: AppDrawer(onClick: onDrawerClick),
+      body: categoryModel == null
+          ? CategoriesPage(onClick: onClick)
+          : HomePage(catId: categoryModel?.id ?? " "),
     );
+  }
+
+  CategoryModel? categoryModel = null;
+  onDrawerClick(){
+    categoryModel=null;
+    Navigator.pop(context);
+    setState(() {
+
+    });
+  }
+  onClick(category) {
+    categoryModel = category;
+    setState(() {
+
+    });
   }
 }

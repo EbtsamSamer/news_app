@@ -6,10 +6,11 @@ import '../../core/api_manger.dart';
 import '../../repository/news_repo.dart';
 
 class SourceWidgets extends StatefulWidget {
-  SourceWidgets({super.key,required this.repo,
+  SourceWidgets({super.key,required this.repo,required this.catId
     //required this.callBack   مش محتجاها
   });
   NewsRepo repo ;
+  String catId;
 
   @override
   State<SourceWidgets> createState() => _SourceWidgetsState();
@@ -23,7 +24,7 @@ class _SourceWidgetsState extends State<SourceWidgets> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: widget.repo.getSources(),
+      future: widget.repo.getSources(widget.catId),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());

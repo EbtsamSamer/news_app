@@ -6,15 +6,11 @@ import '../widgets/card_item.dart';
 import '../widgets/source_widgets.dart';
 
 class HomePage extends StatelessWidget {
-   HomePage({super.key});
+   HomePage({super.key,required this.catId});
   NewsRepo newsRepo = NewsRepo(ApiManger());
+  String catId;
   @override
   Widget build(BuildContext context) {
-    return  Column(
-      children: [
-        SourceWidgets(repo: newsRepo),
-
-      ],
-    );
+    return  SourceWidgets(repo: newsRepo,catId:catId ,);
   }
 }

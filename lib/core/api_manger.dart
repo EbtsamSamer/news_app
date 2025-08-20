@@ -15,8 +15,7 @@ class ApiManger{
         printResponseData: true,
         printResponseMessage: true,
       ),
-    ),);
-   // dio.interceptors.add(AuthInterceptor());
+    ),)..interceptors.add(AuthInterceptor());
   }
   postApi(){
     
